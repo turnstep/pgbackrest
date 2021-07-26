@@ -935,6 +935,10 @@ configParse(const Storage *storage, unsigned int argListSize, const char *argLis
         {
             const char *arg = argList[argListIdx];
 
+            // Special exception so that ""--help" and "--version" work the same as their plain versions
+            if ((strcmp(arg, "--version") == 0) || (strcmp(arg, "--help") == 0))
+              arg += 2;
+
             // If an option
             if (arg[0] == '-')
             {
