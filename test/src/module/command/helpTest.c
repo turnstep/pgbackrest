@@ -144,6 +144,12 @@ testRun(void)
         TEST_RESULT_VOID(testCfgLoad(argList), "help from help command");
         TEST_RESULT_STR_Z(helpRender(), generalHelp, "check text");
 
+        argList = strLstNew();
+        strLstAddZ(argList, "/path/to/pgbackrest");
+        strLstAddZ(argList, "--help");
+        TEST_RESULT_VOID(testCfgLoad(argList), "help from --help command");
+        TEST_RESULT_STR_Z(helpRender(), generalHelp, "check text");
+
         // -------------------------------------------------------------------------------------------------------------------------
         TEST_TITLE("version command");
 
